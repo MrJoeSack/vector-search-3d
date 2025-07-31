@@ -2,66 +2,32 @@
 
 An interactive 3D visualization showing the trade-offs between performance, cost, and accuracy in vector search systems, inspired by database query optimizer "Picasso diagrams."
 
-![Vector Search 3D Visualization - Interactive Rotation](screenshots/main-rotation.gif)
-*Interactive 3D view showing rotation revealing all configurations and optimal zones*
+![Complete Demo - Configuration Clicks and Zoom](screenshots/complete-demo.gif)
+*Complete demonstration: clicking through all four configurations (Cold Storage, Warm Cache, Premium Hot, Balanced) and exploring with zoom/rotation*
 
-## ✨ Key Features in Action
+## 🎯 Interactive Demonstration
 
-| Interactive Rotation | Multiple Viewing Angles | Hover Interactions |
-|:---:|:---:|:---:|
-| ![Rotation](screenshots/main-rotation.gif) | ![Angles](screenshots/angle-showcase.gif) | ![Hover](screenshots/hover-sequence.gif) |
-| Drag to rotate the 3D space | Explore different perspectives | Hover over spheres for details |
+The animation above shows the complete workflow:
+1. **Cold Storage** (Blue) - Low cost, higher latency, good recall
+2. **Warm Cache** (Green) - Balanced performance and cost 
+3. **Premium Hot** (Red) - Ultra-low latency, premium cost, best recall
+4. **Balanced** (Yellow) - Cost-effective with solid performance
+5. **Zoom & Rotation** - Explore the 3D axes and optimal zones
 
-## 🎥 Demo
+## 🎥 Application Features
 
-### Live Demo
-Once deployed, users can:
-- **Rotate** the 3D view by dragging with the mouse
-- **Zoom** in/out using the scroll wheel  
-- **Hover** over configuration points to see tooltips
-- **Click** points to view detailed specifications
+### Interactive Elements
+- **Click configurations** to see detailed specifications
+- **Rotate the 3D view** by dragging with mouse
+- **Zoom in/out** using scroll wheel  
+- **Hover over points** for quick metrics tooltips
 
-### Visual Overview
-
-#### Main Interface
-![Interface Overview - Multiple Angles](screenshots/interface-overview.gif)
-*Complete interface from multiple angles showing legend panel and 3D visualization*
-
-The visualization presents:
-- **Legend Panel** (left): Shows all configurations and optimal zones with color coding
-- **3D Scatter Plot** (center): Interactive space with logarithmic axes for cost/latency
-- **Grid Lines**: Help quantify exact values on each axis
-- **Glowing Spheres**: Each represents a different vector search configuration
-
-#### Interactive Features
-
-![Interactive Hover Sequence](screenshots/hover-sequence.gif)
-*Animated demonstration of hovering over different configuration points*
-
-When you hover over any configuration sphere:
-- A tooltip appears showing exact metrics
-- The sphere glows brighter
-- Latency, cost, and recall values are displayed
-
-![Zoom and Angle Showcase](screenshots/zoom-interaction.gif)
-*Zoom interaction and different viewing angles to explore the data*
-
-Clicking reveals:
-- Full configuration description
-- Use case recommendations
-- Performance characteristics
-- Implementation guidance
-
-### Recording Your Own Demo
-To create a video demonstration:
-1. Start the development server: `npm run dev`
-2. Open http://localhost:5173 in your browser
-3. Use screen recording software (QuickTime on Mac, OBS, etc.)
-4. Demonstrate:
-   - Rotating the view from different angles
-   - Hovering over each configuration point
-   - Clicking to show detailed information
-   - Zooming to explore the zones
+### Visual Components
+- **Legend Panel** (left): Color-coded configurations and optimal zones
+- **3D Scatter Plot** (center): Logarithmic axes for cost/latency, linear for recall
+- **Grid Lines**: Quantify exact values on each axis
+- **Glowing Spheres**: Each represents a vector search configuration
+- **Translucent Zones**: Optimal regions for different use cases
 
 ## Features
 
@@ -72,26 +38,14 @@ To create a video demonstration:
 
 ### Configuration Points
 
-![Angle Showcase - All Configurations](screenshots/angle-showcase.gif)
-*Rotating view showcasing all four configurations and their relative positions*
-
 Four distinct vector search configurations represented as glowing, pulsing spheres:
 
-1. **Cold Storage** (Blue) - 500ms, $30, 90%
-   - Low-cost archive storage with acceptable recall
-   - Good for batch processing and non-critical applications
-
-2. **Warm Cache** (Green) - 40ms, $150, 95%
-   - Balanced performance and cost
-   - Ideal for most production applications requiring good response times
-
-3. **Premium Hot** (Red) - 10ms, $800, 98%
-   - Ultra-low latency with maximum accuracy
-   - Perfect for real-time, mission-critical applications
-
-4. **Balanced** (Yellow) - 100ms, $80, 93%
-   - Cost-effective solution with good performance
-   - Suitable for most RAG and search applications
+| Configuration | Latency | Cost/M vectors | Recall@10 | Use Case |
+|:---:|:---:|:---:|:---:|:---|
+| **Cold Storage** (Blue) | 500ms | $30 | 90% | Batch processing, non-critical applications |
+| **Warm Cache** (Green) | 40ms | $150 | 95% | Production applications, balanced performance |
+| **Premium Hot** (Red) | 10ms | $800 | 98% | Real-time, mission-critical applications |
+| **Balanced** (Yellow) | 100ms | $80 | 93% | RAG applications, cost-effective search |
 
 ### Optimal Zones
 
