@@ -2,6 +2,33 @@
 
 An interactive 3D visualization showing the trade-offs between performance, cost, and accuracy in vector search systems, inspired by database query optimizer "Picasso diagrams."
 
+## 🎥 Demo
+
+### Live Demo
+Once deployed, users can:
+- **Rotate** the 3D view by dragging with the mouse
+- **Zoom** in/out using the scroll wheel  
+- **Hover** over configuration points to see tooltips
+- **Click** points to view detailed specifications
+
+### What You'll See
+The visualization presents a 3D space where:
+- Each **glowing sphere** represents a vector search configuration
+- **Translucent zones** highlight optimal regions for different use cases
+- **Grid lines and labels** help quantify the trade-offs
+- **Interactive tooltips** provide instant feedback
+
+### Recording Your Own Demo
+To create a video demonstration:
+1. Start the development server: `npm run dev`
+2. Open http://localhost:5173 in your browser
+3. Use screen recording software (QuickTime on Mac, OBS, etc.)
+4. Demonstrate:
+   - Rotating the view from different angles
+   - Hovering over each configuration point
+   - Clicking to show detailed information
+   - Zooming to explore the zones
+
 ## Features
 
 ### 3D Scatter Plot
@@ -76,6 +103,23 @@ Translucent 3D regions showing optimal parameter ranges for different use cases:
    ```bash
    npm run build
    ```
+
+## 🚀 Deploy to GitHub Pages
+
+For a live demo that anyone can access:
+
+```bash
+./deploy-github-pages.sh
+```
+
+This will deploy your visualization to: https://mrjoesack.github.io/vector-search-3d
+
+Alternatively, deploy manually:
+```bash
+npm run build
+npm install --save-dev gh-pages
+npm run deploy
+```
 
 ## Usage Instructions
 
