@@ -2,6 +2,7 @@ import { useRef, useMemo, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import * as THREE from 'three'
+import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js'
 
 // Configuration data points
 const CONFIG_POINTS = [
@@ -96,6 +97,66 @@ const dataToPosition = (latency, cost, recall) => [
   linearScale(recall, 80, 99)     // Z: linear scale for recall
 ];
 
+// Parametric functions for curved optimal zones
+const createRealTimeSearchSurface = (u, v, target) => {
+  // Real-time search: steep exponential curves for ultra-low latency requirements
+  // Maps to latency < 50ms, recall > 92% (z > 4.6)
+  
+  // Map u,v to coordinate space
+  const x = -2 + u * 3;  // latency: 10ms-50ms range (log scale -2 to 1)
+  const y = -2 + v * 6;  // cost: full range for premium performance
+  
+  // Exponential saturation model: α⋅(1 − e^(-β⋅x))
+  // High performance requires exponential cost increase
+  const latencyPenalty = Math.pow(1 - u, 2); // Steep cost for low latency
+  const costEfficiency = 1 - Math.exp(-1.5 * v); // Diminishing returns on spending
+  
+  // Recall boundary: starts high (92%+) but curves down with extreme cost/latency demands
+  const baseRecall = 4.6; // 92% recall baseline
+  const performancePenalty = Math.exp(-3 * u) * (1 - costEfficiency);
+  const z = baseRecall + performancePenalty * 0.4;
+  
+  target.set(x, y, Math.min(Math.max(z, 4.5), 5));
+};
+
+const createRAGApplicationsSurface = (u, v, target) => {
+  // RAG applications: balanced curves for production workloads
+  // Maps to latency < 200ms, cost < $200, recall > 90% (z > 4.2)
+  
+  const x = -2 + u * 5;  // latency: broader range for balanced approach
+  const y = -2 + v * 5;  // cost: moderate cost tolerance
+  
+  // Power function model: y = a⋅x^B where B < 1 for diminishing returns
+  const latencyEfficiency = Math.pow(u, 0.7); // Moderate diminishing returns
+  const costEfficiency = Math.pow(v, 0.6);    // Good cost-performance balance
+  
+  // Recall surface: smooth trade-off between all three factors
+  const baseRecall = 4.2; // 90% recall baseline
+  const performanceBonus = latencyEfficiency * costEfficiency * 0.8;
+  const z = baseRecall + performanceBonus;
+  
+  target.set(x, y, Math.min(z, 5));
+};
+
+const createBatchAnalyticsSurface = (u, v, target) => {
+  // Batch analytics: cost-optimized curves with relaxed performance requirements
+  // Maps to cost < $100, recall > 85% (z > 3.5)
+  
+  const x = -2 + u * 6;  // latency: wide tolerance
+  const y = -2 + v * 4;  // cost: strong cost optimization (lower range)
+  
+  // Gentle exponential for cost-sensitive scenarios
+  const costOptimization = 1 - Math.exp(-2 * v); // Strong cost sensitivity
+  const latencyTolerance = Math.pow(1 - u, 0.3); // High latency tolerance
+  
+  // Recall boundary: optimized for cost-effectiveness
+  const baseRecall = 3.5; // 85% recall baseline
+  const efficiencyBonus = costOptimization * latencyTolerance * 1.5;
+  const z = baseRecall + efficiencyBonus;
+  
+  target.set(x, y, Math.min(z, 5));
+};
+
 function ConfigurationPoint({ config, isSelected, isHovered, onClick, onHover, onHoverEnd }) {
   const meshRef = useRef();
   const glowRef = useRef();
@@ -173,29 +234,43 @@ function OptimalZone({ zone }) {
     }
   });
 
-  // Create box geometry for the zone
+  // Create parametric geometry for curved zones
   const geometry = useMemo(() => {
-    const geom = new THREE.BoxGeometry(
-      zone.vertices[1][0] - zone.vertices[0][0], // width
-      zone.vertices[2][1] - zone.vertices[0][1], // height  
-      zone.vertices[4][2] - zone.vertices[0][2]  // depth
-    );
-    return geom;
-  }, [zone]);
-
-  const position = useMemo(() => [
-    (zone.vertices[1][0] + zone.vertices[0][0]) / 2,
-    (zone.vertices[2][1] + zone.vertices[0][1]) / 2,
-    (zone.vertices[4][2] + zone.vertices[0][2]) / 2
-  ], [zone]);
+    let parametricFunction;
+    
+    // Map zone to its corresponding parametric function
+    switch (zone.name) {
+      case 'Real-time Search':
+        parametricFunction = createRealTimeSearchSurface;
+        break;
+      case 'RAG Applications':
+        parametricFunction = createRAGApplicationsSurface;
+        break;
+      case 'Batch Analytics':
+        parametricFunction = createBatchAnalyticsSurface;
+        break;
+      default:
+        // Fallback to a simple curved surface
+        parametricFunction = (u, v, target) => {
+          const x = -2 + u * 6;
+          const y = -2 + v * 6;
+          const z = Math.sin(u * Math.PI) * Math.sin(v * Math.PI) * 2 + 2.5;
+          target.set(x, y, z);
+        };
+    }
+    
+    // Create parametric geometry with reasonable resolution
+    return new ParametricGeometry(parametricFunction, 32, 32);
+  }, [zone.name]);
 
   return (
-    <mesh ref={meshRef} position={position} geometry={geometry}>
+    <mesh ref={meshRef} geometry={geometry}>
       <meshBasicMaterial
         color={zone.color}
         transparent
         opacity={zone.opacity}
         side={THREE.DoubleSide}
+        wireframe={false}
       />
     </mesh>
   );
