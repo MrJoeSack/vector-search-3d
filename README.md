@@ -2,6 +2,9 @@
 
 An interactive 3D visualization showing the trade-offs between performance, cost, and accuracy in vector search systems, inspired by database query optimizer "Picasso diagrams."
 
+![Vector Search 3D Visualization Main View](screenshots/placeholder-main.png)
+*Main view showing all four configurations and optimal zones in 3D space*
+
 ## 🎥 Demo
 
 ### Live Demo
@@ -11,12 +14,36 @@ Once deployed, users can:
 - **Hover** over configuration points to see tooltips
 - **Click** points to view detailed specifications
 
-### What You'll See
-The visualization presents a 3D space where:
-- Each **glowing sphere** represents a vector search configuration
-- **Translucent zones** highlight optimal regions for different use cases
-- **Grid lines and labels** help quantify the trade-offs
-- **Interactive tooltips** provide instant feedback
+### Visual Overview
+
+#### Main Interface
+![Interface Overview](screenshots/placeholder-interface.png)
+*The complete interface with legend panel on the left and 3D visualization on the right*
+
+The visualization presents:
+- **Legend Panel** (left): Shows all configurations and optimal zones with color coding
+- **3D Scatter Plot** (center): Interactive space with logarithmic axes for cost/latency
+- **Grid Lines**: Help quantify exact values on each axis
+- **Glowing Spheres**: Each represents a different vector search configuration
+
+#### Interactive Features
+
+![Hover Tooltip](screenshots/placeholder-hover.png)
+*Hovering over a configuration point shows detailed metrics*
+
+When you hover over any configuration sphere:
+- A tooltip appears showing exact metrics
+- The sphere glows brighter
+- Latency, cost, and recall values are displayed
+
+![Configuration Details](screenshots/placeholder-details.png)
+*Clicking a sphere shows comprehensive configuration information*
+
+Clicking reveals:
+- Full configuration description
+- Use case recommendations
+- Performance characteristics
+- Implementation guidance
 
 ### Recording Your Own Demo
 To create a video demonstration:
@@ -37,6 +64,10 @@ To create a video demonstration:
 - **Z-axis**: Recall@10 Percentage (80% to 99%, linear scale)
 
 ### Configuration Points
+
+![Configuration Points](screenshots/placeholder-configs.png)
+*Four distinct vector search configurations as glowing spheres*
+
 Four distinct vector search configurations represented as glowing, pulsing spheres:
 
 1. **Cold Storage** (Blue) - 500ms, $30, 90%
@@ -56,6 +87,10 @@ Four distinct vector search configurations represented as glowing, pulsing spher
    - Suitable for most RAG and search applications
 
 ### Optimal Zones
+
+![Optimal Zones](screenshots/placeholder-zones.png)
+*Translucent 3D regions showing optimal parameter ranges*
+
 Translucent 3D regions showing optimal parameter ranges for different use cases:
 
 - **Real-time Search** (Red zone): Latency < 50ms, Recall > 92%
