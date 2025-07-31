@@ -2,17 +2,17 @@
 
 An interactive 3D visualization showing the trade-offs between performance, cost, and accuracy in vector search systems, inspired by database query optimizer "Picasso diagrams."
 
-![Complete Demo - Configuration Clicks and Zoom](screenshots/complete-demo.gif)
-*Complete demonstration: clicking through all four configurations (Cold Storage, Warm Cache, Premium Hot, Balanced) and exploring with zoom/rotation*
+![Complete Demo - Interactive 3D Visualization](screenshots/complete-demo.gif)
+*Interactive demonstration: clicking configuration details, 3D rotation revealing all spheres, and zoom functionality*
 
 ## 🎯 Interactive Demonstration
 
-The animation above shows the complete workflow:
-1. **Cold Storage** (Blue) - Low cost, higher latency, good recall
-2. **Warm Cache** (Green) - Balanced performance and cost 
-3. **Premium Hot** (Red) - Ultra-low latency, premium cost, best recall
-4. **Balanced** (Yellow) - Cost-effective with solid performance
-5. **Zoom & Rotation** - Explore the 3D axes and optimal zones
+The animation above showcases the key features:
+1. **Configuration Details** - Click any sphere to see detailed performance metrics
+2. **3D Rotation** - Drag to rotate and view all four configurations from different angles
+3. **Zoom Control** - Scroll to zoom in/out for detailed examination of axes and data points
+4. **Visual Zones** - See translucent optimal regions for different use cases
+5. **Complete Interface** - Legend panel explains all configurations and interaction methods
 
 ## 🎥 Application Features
 
