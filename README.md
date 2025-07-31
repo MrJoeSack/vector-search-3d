@@ -2,8 +2,15 @@
 
 An interactive 3D visualization showing the trade-offs between performance, cost, and accuracy in vector search systems, inspired by database query optimizer "Picasso diagrams."
 
-![Vector Search 3D Visualization Main View](screenshots/placeholder-main.png)
-*Main view showing all four configurations and optimal zones in 3D space*
+![Vector Search 3D Visualization - Interactive Rotation](screenshots/main-rotation.gif)
+*Interactive 3D view showing rotation revealing all configurations and optimal zones*
+
+## ✨ Key Features in Action
+
+| Interactive Rotation | Multiple Viewing Angles | Hover Interactions |
+|:---:|:---:|:---:|
+| ![Rotation](screenshots/main-rotation.gif) | ![Angles](screenshots/angle-showcase.gif) | ![Hover](screenshots/hover-sequence.gif) |
+| Drag to rotate the 3D space | Explore different perspectives | Hover over spheres for details |
 
 ## 🎥 Demo
 
@@ -17,8 +24,8 @@ Once deployed, users can:
 ### Visual Overview
 
 #### Main Interface
-![Interface Overview](screenshots/placeholder-interface.png)
-*The complete interface with legend panel on the left and 3D visualization on the right*
+![Interface Overview - Multiple Angles](screenshots/interface-overview.gif)
+*Complete interface from multiple angles showing legend panel and 3D visualization*
 
 The visualization presents:
 - **Legend Panel** (left): Shows all configurations and optimal zones with color coding
@@ -28,16 +35,16 @@ The visualization presents:
 
 #### Interactive Features
 
-![Hover Tooltip](screenshots/placeholder-hover.png)
-*Hovering over a configuration point shows detailed metrics*
+![Interactive Hover Sequence](screenshots/hover-sequence.gif)
+*Animated demonstration of hovering over different configuration points*
 
 When you hover over any configuration sphere:
 - A tooltip appears showing exact metrics
 - The sphere glows brighter
 - Latency, cost, and recall values are displayed
 
-![Configuration Details](screenshots/placeholder-details.png)
-*Clicking a sphere shows comprehensive configuration information*
+![Zoom and Angle Showcase](screenshots/zoom-interaction.gif)
+*Zoom interaction and different viewing angles to explore the data*
 
 Clicking reveals:
 - Full configuration description
@@ -65,8 +72,8 @@ To create a video demonstration:
 
 ### Configuration Points
 
-![Configuration Points](screenshots/placeholder-configs.png)
-*Four distinct vector search configurations as glowing spheres*
+![Angle Showcase - All Configurations](screenshots/angle-showcase.gif)
+*Rotating view showcasing all four configurations and their relative positions*
 
 Four distinct vector search configurations represented as glowing, pulsing spheres:
 
@@ -88,8 +95,8 @@ Four distinct vector search configurations represented as glowing, pulsing spher
 
 ### Optimal Zones
 
-![Optimal Zones](screenshots/placeholder-zones.png)
-*Translucent 3D regions showing optimal parameter ranges*
+![Actual Main View](screenshots/actual-main.png)
+*Static view highlighting the translucent optimal zones for different use cases*
 
 Translucent 3D regions showing optimal parameter ranges for different use cases:
 
