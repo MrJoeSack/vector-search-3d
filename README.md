@@ -2,17 +2,20 @@
 
 An interactive 3D visualization showing the trade-offs between performance, cost, and accuracy in vector search systems, inspired by database query optimizer "Picasso diagrams."
 
-![Complete Demo - Interactive 3D Visualization](screenshots/complete-demo.gif)
-*Interactive demonstration: clicking configuration details, 3D rotation revealing all spheres, and zoom functionality*
+![3D Rotation Demo](screenshots/complete-demo.gif)
+*Interactive 3D rotation showing all four configurations and zoom functionality*
 
-## 🎯 Interactive Demonstration
+![Feature Overview](screenshots/feature-showcase.png)
+*Complete feature overview with all configurations and capabilities*
 
-The animation above showcases the key features:
-1. **Configuration Details** - Click any sphere to see detailed performance metrics
-2. **3D Rotation** - Drag to rotate and view all four configurations from different angles
-3. **Zoom Control** - Scroll to zoom in/out for detailed examination of axes and data points
-4. **Visual Zones** - See translucent optimal regions for different use cases
-5. **Complete Interface** - Legend panel explains all configurations and interaction methods
+## 🎯 Key Capabilities
+
+**Interactive 3D Visualization:**
+- **Drag to rotate** - Explore the data from different angles
+- **Scroll to zoom** - Examine axes and relationships in detail  
+- **Click spheres** - View detailed performance metrics for each configuration
+- **Hover tooltips** - Quick stats without opening full details
+- **Legend reference** - Understand colors, zones, and interactions
 
 ## 🎥 Application Features
 
